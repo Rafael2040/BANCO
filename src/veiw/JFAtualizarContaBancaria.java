@@ -17,9 +17,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import model.bean.Cliente;
 import model.bean.ContaBancaria;
-import model.dao.ClienteDAO;
 import model.dao.ContaBancariaDAO;
 import veiw.JFCadastrarContaBancaria.SwingAction;
 import veiw.JFCadastrarContaBancaria.SwingAction_1;
@@ -115,13 +113,13 @@ public class JFAtualizarContaBancaria extends JFrame {
 		rdbtnCorrente.setBounds(234, 105, 212, 23);
 		contentPane.add(rdbtnCorrente);
 		
-		JRadioButton rdbtnPoupança = new JRadioButton("Conta poupan\u00E7a");
-		rdbtnPoupança.setBounds(234, 130, 212, 23);
-		contentPane.add(rdbtnPoupança);
+		JRadioButton rdbtnPoupanÃ§a = new JRadioButton("Conta poupan\u00E7a");
+		rdbtnPoupanÃ§a.setBounds(234, 130, 212, 23);
+		contentPane.add(rdbtnPoupanÃ§a);
 		
-		ButtonGroup Corrente_Poupança = new ButtonGroup();
-		Corrente_Poupança.add(rdbtnPoupança);
-		Corrente_Poupança.add(rdbtnCorrente);
+		ButtonGroup Corrente_PoupanÃ§a = new ButtonGroup();
+		Corrente_PoupanÃ§a.add(rdbtnPoupanÃ§a);
+		Corrente_PoupanÃ§a.add(rdbtnCorrente);
 		
 		
 		JLabel lblNewLabel_6 = new JLabel("Saldo");
@@ -140,10 +138,10 @@ public class JFAtualizarContaBancaria extends JFrame {
 		String str = String.valueOf(c.getSaldo());
 		textSaldo.setText(str);
 		textNome.setText(c.getNome());
-		if(c.isCorrente_Poupaça() == false) {
+		if(c.isCorrente_PoupaÃ§a() == false) {
 			rdbtnCorrente.setSelected(true);
 		}else{
-			rdbtnPoupança.setSelected(true);
+			rdbtnPoupanÃ§a.setSelected(true);
 		}
 		
 		JButton btnCadastrar = new JButton("Atualizar");
@@ -158,10 +156,10 @@ public class JFAtualizarContaBancaria extends JFrame {
 				c.setSaldo(Double.parseDouble(textSaldo.getText()));
 				
 				if(rdbtnCorrente.isSelected()) {
-					c.setCorrente_Poupaça(false);
+					c.setCorrente_PoupaÃ§a(false);
 				}
-				else if (rdbtnPoupança.isSelected()) {
-					c.setCorrente_Poupaça(true);
+				else if (rdbtnPoupanÃ§a.isSelected()) {
+					c.setCorrente_PoupaÃ§a(true);
 				}
 				dao.update(c);
 			}
@@ -182,7 +180,7 @@ public class JFAtualizarContaBancaria extends JFrame {
 				textConta.setText(null);
 				textNome.setText(null);
 				textSaldo.setText(null);
-				Corrente_Poupança.clearSelection();
+				Corrente_PoupanÃ§a.clearSelection();
 			}
 		});
 		btnLimpar.setAction(action_1);
